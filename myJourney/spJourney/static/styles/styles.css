@@ -7,8 +7,8 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #f0f4f8, #d9e2ec);
-    color: #333;
+    background: #000000;
+    color: #ffffff;
     line-height: 1.6;
     padding: 20px;
 }
@@ -17,9 +17,9 @@ body {
 header {
     text-align: center;
     padding: 20px 0;
-    background-color: #ffffffdd;
+    background-color: #1a1a1a;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
     margin-bottom: 30px;
 }
 
@@ -52,11 +52,13 @@ main {
 
 /* ---------- Learning Journey Cards ---------- */
 .journey-card {
-    background-color: #ffffff;
+    background-color: #1a1a1a;
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    border: 1px solid #333;
 }
 
 .journey-card:hover {
@@ -64,8 +66,67 @@ main {
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
+.journey-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.journey-header h2 {
+    color: #ffffff;
+    margin: 0;
+    flex: 1;
+}
+
+.toggle-btn {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.toggle-btn:hover {
+    background-color: #0b5ed7;
+    transform: scale(1.05);
+}
+
+.toggle-icon {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.journey-description {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0;
+}
+
+.journey-description.expanded {
+    max-height: 500px;
+    padding: 10px 0;
+}
+
+.journey-description p {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.journey-description small {
+    color: #cccccc;
+    display: block;
+}
+
 .journey-card h2 {
-    color: #0d6efd;
+    color: #ffffff;
     margin-bottom: 10px;
 }
 
@@ -74,17 +135,18 @@ main {
 }
 
 .journey-card small {
-    color: #555;
+    color: #cccccc;
 }
 
 /* ---------- About Me ---------- */
 .profile-card,
 .profile {
-    background-color: #ffffff;
+    background-color: #1a1a1a;
     border-radius: 12px;
     padding: 25px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
     text-align: center;
+    border: 1px solid #333;
 }
 
 .profile-card img,
@@ -106,14 +168,14 @@ main {
 .profile-card h2,
 .profile h2 {
     font-size: 2rem;
-    color: #0d6efd;
+    color: #ffffff;
     margin-bottom: 10px;
 }
 
 .profile-card p,
 .profile p {
     margin-bottom: 8px;
-    color: #555;
+    color: #ffffff;
 }
 
 .profile h3 {
@@ -128,7 +190,7 @@ footer {
     text-align: center;
     margin-top: 40px;
     font-size: 0.9rem;
-    color: #888;
+    color: #cccccc;
 }
 
 /* ---------- Responsive ---------- */
@@ -154,8 +216,25 @@ footer {
         padding: 15px;
     }
 
-    .journey-card h2 {
+    .journey-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .journey-header h2 {
         font-size: 1.3rem;
+        width: 100%;
+    }
+
+    .toggle-btn {
+        align-self: flex-end;
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    .journey-description.expanded {
+        max-height: 400px;
     }
 
     .profile,
@@ -168,7 +247,8 @@ footer {
         font-size: 1.5rem;
     }
 
-    .profile h3 {
+    .profile h3,
+    .profile-card h3 {
         font-size: 1.1rem;
     }
 
@@ -176,6 +256,11 @@ footer {
     .profile-card img {
         width: 120px;
         height: 120px;
+    }
+
+    .profile p,
+    .profile-card p {
+        font-size: 0.95rem;
     }
 }
 
@@ -194,6 +279,19 @@ footer {
         margin: 0;
     }
 
+    .journey-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .toggle-btn {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+
+    .journey-description.expanded {
+        max-height: 350px;
+    }
+
     .profile,
     .profile-card {
         padding: 15px;
@@ -208,6 +306,16 @@ footer {
     .profile h2,
     .profile-card h2 {
         font-size: 1.3rem;
+    }
+
+    .profile h3,
+    .profile-card h3 {
+        font-size: 1rem;
+    }
+
+    .profile p,
+    .profile-card p {
+        font-size: 0.9rem;
     }
 }
 

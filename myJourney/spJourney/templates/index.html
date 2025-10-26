@@ -21,12 +21,39 @@
     <main>
         {% for journey in journeys %}
         <section class="journey-card">
-            <h2>{{ journey.title }}</h2>
-            <p>{{ journey.description }}</p>
-            <small>{{ journey.date }}</small>
+            <div class="journey-header">
+                <h2>{{ journey.title }}</h2>
+                <button class="toggle-btn" onclick="toggleDescription({{ forloop.counter0 }})">
+                    <span class="toggle-text">Read More</span>
+                    <span class="toggle-icon">▼</span>
+                </button>
+            </div>
+            <div class="journey-description" id="description-{{ forloop.counter0 }}">
+                <p>{{ journey.description }}</p>
+                <small>{{ journey.date }}</small>
+            </div>
         </section>
         {% endfor %}
     </main>
+
+    <script>
+        function toggleDescription(index) {
+            const description = document.getElementById('description-' + index);
+            const button = description.previousElementSibling.querySelector('.toggle-btn');
+            const toggleText = button.querySelector('.toggle-text');
+            const toggleIcon = button.querySelector('.toggle-icon');
+            
+            if (description.classList.contains('expanded')) {
+                description.classList.remove('expanded');
+                toggleText.textContent = 'Read More';
+                toggleIcon.textContent = '▼';
+            } else {
+                description.classList.add('expanded');
+                toggleText.textContent = 'Read Less';
+                toggleIcon.textContent = '▲';
+            }
+        }
+    </script>
     <footer>
         <p>Made with ❤️ using Django</p>
     </footer>
