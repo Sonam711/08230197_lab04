@@ -23,7 +23,7 @@
         <section class="journey-card">
             <div class="journey-header">
                 <h2>{{ journey.title }}</h2>
-                <button class="toggle-btn" onclick="toggleDescription({{ forloop.counter0 }})">
+                <button class="toggle-btn" data-index="{{ forloop.counter0 }}">
                     <span class="toggle-text">Read More</span>
                     <span class="toggle-icon">▼</span>
                 </button>
@@ -37,12 +37,14 @@
     </main>
 
     <script>
+        // Toggle function for expanding/collapsing journey descriptions
         function toggleDescription(index) {
             const description = document.getElementById('description-' + index);
-            const button = description.previousElementSibling.querySelector('.toggle-btn');
+            const card = description.closest('.journey-card');
+            const button = card.querySelector('.toggle-btn');
             const toggleText = button.querySelector('.toggle-text');
             const toggleIcon = button.querySelector('.toggle-icon');
-            
+
             if (description.classList.contains('expanded')) {
                 description.classList.remove('expanded');
                 toggleText.textContent = 'Read More';
@@ -53,7 +55,19 @@
                 toggleIcon.textContent = '▲';
             }
         }
+
+        // Add event listeners to all toggle buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.toggle-btn');
+            buttons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const index = this.getAttribute('data-index');
+                    toggleDescription(index);
+                });
+            });
+        });
     </script>
+
     <footer>
         <p>Made with ❤️ using Django</p>
     </footer>
