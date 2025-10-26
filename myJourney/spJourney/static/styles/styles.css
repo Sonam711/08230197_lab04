@@ -78,7 +78,8 @@ main {
 }
 
 /* ---------- About Me ---------- */
-.profile-card {
+.profile-card,
+.profile {
     background-color: #ffffff;
     border-radius: 12px;
     padding: 25px;
@@ -86,7 +87,8 @@ main {
     text-align: center;
 }
 
-.profile-card img {
+.profile-card img,
+.profile img {
     width: 150px;
     height: 150px;
     object-fit: cover;
@@ -96,19 +98,29 @@ main {
     transition: transform 0.3s ease;
 }
 
-.profile-card img:hover {
+.profile-card img:hover,
+.profile img:hover {
     transform: scale(1.05);
 }
 
-.profile-card h2 {
+.profile-card h2,
+.profile h2 {
     font-size: 2rem;
     color: #0d6efd;
     margin-bottom: 10px;
 }
 
-.profile-card p {
+.profile-card p,
+.profile p {
     margin-bottom: 8px;
     color: #555;
+}
+
+.profile h3 {
+    color: #0d6efd;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-size: 1.3rem;
 }
 
 /* ---------- Footer (optional) ---------- */
@@ -121,16 +133,81 @@ footer {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
     header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     nav a {
         margin: 0 10px;
+        font-size: 0.9rem;
     }
 
     main {
         padding: 0 10px;
+    }
+
+    .journey-card {
+        padding: 15px;
+    }
+
+    .journey-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .profile,
+    .profile-card {
+        padding: 20px;
+    }
+
+    .profile h2,
+    .profile-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .profile h3 {
+        font-size: 1.1rem;
+    }
+
+    .profile img,
+    .profile-card img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav a {
+        margin: 0;
+    }
+
+    .profile,
+    .profile-card {
+        padding: 15px;
+    }
+
+    .profile img,
+    .profile-card img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile h2,
+    .profile-card h2 {
+        font-size: 1.3rem;
     }
 }
 
