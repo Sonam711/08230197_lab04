@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Learning Journey</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+
+</head>
+
+<body>
+    <header>
+        <h1>🌟 My Learning Journey 🌟</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about/">About Me</a>
+        </nav>
+    </header>
+    <main>
+        {% for journey in journeys %}
+        <section class="journey-card">
+            <h2>{{ journey.title }}</h2>
+            <p>{{ journey.description }}</p>
+            <small>{{ journey.date }}</small>
+        </section>
+        {% endfor %}
+    </main>
+    <footer>
+        <p>Made with ❤️ using Django</p>
+    </footer>
+</body>
+
+</html>
